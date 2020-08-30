@@ -31,11 +31,15 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.get('/books/:id', getSingleBook);
 
+
 function getSingleBook(request, response){
   client.query('SELECT * FROM store_books WHERE id=$1', [request.params.id])
     .then(result => {
       response.render('pages/books/detail', {book : result.rows[0]});
     })
+    .catch(error => {
+      handleError(error, response);
+    });
 }
 
 
@@ -62,12 +66,14 @@ app.get('/searches/new', (request, response) => {
 
 
 app.post('/books', (request, response) => {
+  console.log(request.body);
   const {author, title, isbn,image_url, description} = request.body;
   const values = [author, title, isbn,image_url, description];
   const mySql = `INSERT INTO store_books (author, title, isbn, image_url, description) VALUES ($1, $2, $3,$4, $5)`;
+  console.log('values', values);
   client.query(mySql, values)
-    .then( result => {
-      response.redirect('/pages/books/detail', {bookArray:result.rows});
+    .then(() => {
+      response.redirect('/');
     })
     .catch(error => {
       handleError(error, response);
@@ -131,6 +137,7 @@ function Book (searchData) {
   if (!this.image.startsWith('https')){
     this.image = 'https' + this.image.slice(4);
   }
+  this.id = volumeInfo.id;
   this.title = volumeInfo.title;
   this.authors = volumeInfo.authors; // this is not a single value, but an array of authors
   // when we decide to access this property in the template, remember that it is an array
