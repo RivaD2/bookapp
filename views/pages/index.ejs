@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <head>
     <%- include('../layout/head') %>
   </head>
-  <header id="best-books">
-    Best Books!
-  </header>
-  <h1 class="results-bar"><%= bookArray.length %> Saved Books</h1>
-  <% for(let i=0; i < bookArray.length;i++) { %>
-  <div class="book-container">
-    <div class="image-container">
-  <img src="<%= bookArray[i].image_url%>" class="images" alt="">
-  </div>
-<div class="book-title"><%= bookArray[i].title %>
-</div>
-<div class= "book-author"><%= bookArray[i].authors %>
+  <body>
+    <header id="best-books">
+      Best Books!
+    </header>
+    <h1 class="results-bar"><%= bookArray.length %> Saved Books</h1>
+    <% for(let i=0; i < bookArray.length;i++) { %>
+      <a href="/books/<%= bookArray[i].id %>">
+        <div class="book-container">
+        <div class="image-container">
+          <img src="<%= bookArray[i].image_url%>" class="images" alt="">
+        </div>
+        <div class="book-title"><%= bookArray[i].title %></div>
+        <div class= "book-author"><%= bookArray[i].authors %></div>
 <!-- Add in author Name -remember that it is an array of authors which will require another for loop -->
-</div>
-<div class="book-description">
-  <%= bookArray[i].description %>
-</div>
-<div class="book-select">
-  <input type="text" value="View Details">
-</div>
-</div>
-<% } %>
-</head>
-<body>
-  
+        <div class="book-description">
+          <%= bookArray[i].description %>
+        </div>
+      </div>
+    </a>
+    <% } %>
+
 </body>
 </html>

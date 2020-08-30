@@ -12,8 +12,9 @@
   <!-- Put in variable here from server.js from response.render  -->
     <!-- for loop here. The loop runs through the booksArray 
     and renders a div with the image of the book, title and description -->
-  
+  <div class="book-grid">
 <% for(let i=0; i < bookArray.length;i++) { %>
+  <div class="book-wrapper">
   <div class="book-container">
   <div class="image-container">
     <img src="<%= bookArray[i].image%>" class="images" alt="">
@@ -39,7 +40,9 @@
       </form>
     </div>
     </div>
+  </div>
     <% } %>
+  </div>
 </body>
 </html>
 

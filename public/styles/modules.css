@@ -10,18 +10,67 @@ body {
   font-size: 16px; 
 }
 
+.search-form {
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+}
+
+.form-section {
+  height: 50px;
+  margin: 12px auto;
+  border: black solid 2px;
+  width: 200px;
+}
+.text-bar {
+  text-align: center;
+}
 #best-books {
 background-color: black;
 color:white;
 font-size: 24px;
 padding: 16px;
 }
+
+.book-grid {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.book-wrapper {
+  flex-basis: 100%;
+  padding: 32px;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+/* Flex basis defines how much container wants to take up.
+So at the small screen, the container gets 100% of the screen width.
+As screen gets bigger, it drops to half and then a third and then a quarter. 
+*/
+@media (min-width: 360px) {
+  .book-wrapper {
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .book-wrapper {
+    flex-basis:33%;
+  }
+}
+
+@media (min-width: 968px) {
+  .book-wrapper {
+    flex-basis: 25%;
+  }
+}
 /* Flex was put on book container so that they will stack */
 .book-container {
   background-color: #eeeeee;
   display: flex;
   flex-direction: column;
-  margin: 28px;
   padding: 32px;;
   border: solid 2px #888888;
   border-radius: 2px;
@@ -73,5 +122,21 @@ padding: 16px;
   border-radius: 2px;
 }
 .title {
-  align:center;
+  text-align:center;
+}
+
+.detail-text {
+  color:black;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.details-bar {
+    background-color: #131212;
+    color:white;
+    text-align:left;
+    padding: 8px;
+    font-size: 30px; 
+    margin: 0 auto;
+
 }
