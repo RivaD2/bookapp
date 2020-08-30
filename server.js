@@ -99,6 +99,7 @@ app.post('/searches/new', (request, response) => {
   superagent.get(string)
     .then(books => {
       let bookArray = books.body.items.map(response => {
+        console.log(response);
         //items is the array of data coming back from the API
         return new Book(response);
       });

@@ -9,7 +9,8 @@
     </header>
     <h1 class="results-bar"><%= bookArray.length %> Saved Books</h1>
     <% for(let i=0; i < bookArray.length;i++) { %>
-      <div class="book-container">
+      <a href="/books/<%= bookArray[i].id %>">
+        <div class="book-container">
         <div class="image-container">
           <img src="<%= bookArray[i].image_url%>" class="images" alt="">
         </div>
@@ -20,19 +21,8 @@
           <%= bookArray[i].description %>
         </div>
       </div>
+    </a>
     <% } %>
 
-
-  <div class="book-select">
-  <% bookArray.forEach(book => { %>
-    <div>
-      <a href="/books/<%= book.id %>">
-        <div class="book-title"><%= book.title %></div>
-        <img src="<%= book.image_url%>" class="images" alt="">
-        <div class= "book-author"><%= book.authors %></div>
-      </a>
-    </div>
-  <% }) %>
-</div> 
 </body>
 </html>
