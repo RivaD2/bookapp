@@ -17,10 +17,11 @@ body {
 }
 
 .form-section {
-  height: 50px;
+  height: 42px;
   margin: 12px auto;
+  background-color:#bbbbbb;
   border: black solid 2px;
-  width: 200px;
+  width: 280px;
 }
 .text-bar {
   text-align: center;
@@ -105,12 +106,13 @@ As screen gets bigger, it drops to half and then a third and then a quarter.
   text-decoration: italic;
   text-align: center;
 }
-.api-button {
-  background-color: white;
+#api-button {
+  background-color:black;
   font-size: 15px;
-  color: black;
+  color:white;
   text-decoration: italic;
   text-align: center;
+  padding:0;
 }
 .api-container {
   background-color: rgb(211, 207, 207);
