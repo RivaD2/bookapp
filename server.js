@@ -95,7 +95,7 @@ app.post('/books', (request, response) => {
 
 app.post('/searches/new', (request, response) => {
   let search = request.body.search;
-  let string = `https://www.googleapis.com/books/v1/volumes?q=+in${search[1]}:${search[0]}`;
+  let string = `https://www.googleapis.com/books/v1/volumes?q=+in${search[0]}:${search[1]}`;
   superagent.get(string)
     .then(books => {
       let bookArray = books.body.items.map(response => {
